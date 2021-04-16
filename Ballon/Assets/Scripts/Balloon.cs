@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Balloon
 {
-    public class Balloon : MonoBehaviour, WindTarget
+    public class Balloon : MimiBehaviour, WindTarget
     {
         [SerializeField]
         private float m_fMaxSpeed = 1;

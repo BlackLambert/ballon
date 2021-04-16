@@ -115,7 +115,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0.0001
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -168,7 +168,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -667,7 +667,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 2, y: 1, z: 1}
+    m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -865,7 +865,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 20
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4817,6 +4817,7 @@ GameObject:
   - component: {fileID: 7912266486014436184}
   - component: {fileID: 7912266486014436191}
   - component: {fileID: 7912266486014436190}
+  - component: {fileID: 4887806734909931172}
   m_Layer: 0
   m_Name: WindArea
   m_TagString: Untagged
@@ -4833,7 +4834,7 @@ Transform:
   m_GameObject: {fileID: 7912266486014436189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 2.39, z: 0.03}
-  m_LocalScale: {x: 2, y: 1, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children:
   - {fileID: 3265028564580599}
   m_Father: {fileID: 0}
@@ -4854,7 +4855,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7912266486014436189}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -4914,3 +4915,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_fForce: 30
+  m_particleSystem: {fileID: 7444198248595724443}
+  m_destroyAfterSeconds: {fileID: 4887806734909931172}
+--- !u!114 &4887806734909931172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7912266486014436189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96e1ed745aa7ea46ba4b202c7640de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fSecondsTillDestruction: 3
