@@ -123,7 +123,7 @@ FixedJoint:
   m_GameObject: {fileID: 1120459866093407950}
   m_ConnectedBody: {fileID: 6530141467564864939}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_BreakForce: 100
+  m_BreakForce: 1
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
@@ -252,7 +252,7 @@ FixedJoint:
   m_GameObject: {fileID: 2965349563861352112}
   m_ConnectedBody: {fileID: 7610904271389704379}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_BreakForce: 100
+  m_BreakForce: 1
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
@@ -381,7 +381,7 @@ FixedJoint:
   m_GameObject: {fileID: 3039341495727757841}
   m_ConnectedBody: {fileID: 6576949413940547403}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_BreakForce: 100
+  m_BreakForce: 1
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
@@ -623,7 +623,7 @@ FixedJoint:
   m_GameObject: {fileID: 4220388550215561583}
   m_ConnectedBody: {fileID: 3439230614638578499}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_BreakForce: Infinity
+  m_BreakForce: 1
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
@@ -752,7 +752,7 @@ FixedJoint:
   m_GameObject: {fileID: 5733411573060584444}
   m_ConnectedBody: {fileID: 2008660964514913015}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_BreakForce: 100
+  m_BreakForce: 1
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
@@ -839,7 +839,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4, y: 4, z: 0.4}
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Center: {x: 0, y: 2, z: -0.26}
 --- !u!114 &8147117296958619464
 MonoBehaviour:
   m_ObjectHideFlags: 0

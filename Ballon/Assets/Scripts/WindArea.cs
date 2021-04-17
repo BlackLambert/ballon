@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,18 +16,29 @@ namespace Balloon
         [SerializeField]
         private float m_fMaxParticleSpeed = 5f;
         [SerializeField]
-        private DestroyAfterSeconds m_destroyAfterSeconds;
+        private float m_fDestructionDelay = 1f;
         [SerializeField]
-        private float m_fSecondsTillDeactivation = 2f;
+        private bool m_bActivateOnAwake = false;
         [SerializeField]
-        private float m_fDestractionDelay = 1f;
+        private bool m_bActivateParticlesOnAwake = true;
 
+        public event Action evOnActivated;
+
+        public bool bActivated => m_bActivated;
         private bool m_bActivated = false;
         public float fForcePercentage { get; set; } = 1f;
         private float fActuralForcePercentage => Mathf.Max(m_fMinForcePercentage, fForcePercentage);
 
         public Vector3 v3NormalizedForceDirection => transform.forward.normalized;
 
+
+        protected override void Awake()
+		{
+            base.Awake();
+            if (m_bActivateOnAwake)
+                activate();
+            activateParticles(m_bActivateParticlesOnAwake);
+        }
 
 		public void updateArea(Vector3 _v3StartPos, Vector3 _v3Direction)
 		{
@@ -54,25 +66,30 @@ namespace Balloon
 		public void activate()
 		{
             if (m_bActivated)
-                return;
+                throw new InvalidOperationException();
             m_bActivated = true;
-            m_destroyAfterSeconds.Activate();
-            StartCoroutine(startDestruction());
+            evOnActivated?.Invoke();
+            activateParticles(true);
         }
 
-        private IEnumerator startDestruction()
+        public void deactivate()
 		{
-            yield return new WaitForSeconds(m_fSecondsTillDeactivation);
-            deactivate();
-            yield return new WaitForSeconds(m_fDestractionDelay);
+			if (!m_bActivated)
+				throw new InvalidOperationException();
+			activateParticles(false);
+			m_bActivated = false;
+		}
+
+		private void activateParticles(bool _activate)
+		{
+			ParticleSystem.EmissionModule emission = m_particleSystem.emission;
+			emission.enabled = _activate;
+		}
+
+		public IEnumerator startDestruction()
+        {
+            yield return new WaitForSeconds(m_fDestructionDelay);
             Destroy(gameObject);
-        }
-
-        private void deactivate()
-		{
-            ParticleSystem.EmissionModule emission = m_particleSystem.emission;
-            emission.enabled = false;
-            m_bActivated = false;
         }
 
         private void OnTriggerStay(Collider _other)
