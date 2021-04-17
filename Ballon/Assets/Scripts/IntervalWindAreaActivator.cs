@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Balloon
 {
-    public class IntervalWindAreaDeactivator : MonoBehaviour
+    public class IntervalWindAreaActivator : MimiBehaviour
     {
         [SerializeField]
         private WindArea m_windArea;

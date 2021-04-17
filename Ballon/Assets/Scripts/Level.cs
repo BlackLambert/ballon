@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Balloon
@@ -11,13 +9,13 @@ namespace Balloon
         private int m_iStartLifes = 3;
 
         public event Action evLifesChanged;
-        private int m_iLifes;
-        public int iLifes
+        private int m_iLifesLeft;
+        public int iLifesLeft
         {
-            get => m_iLifes;
+            get => m_iLifesLeft;
             set
             {
-                m_iLifes = value;
+                m_iLifesLeft = value;
                 evLifesChanged?.Invoke();
             }
         }
@@ -47,20 +45,20 @@ namespace Balloon
         }
 
         public event Action evOnStateChanged;
-        private State m_state = State.Running;
-        public State state
+        private State m_eCurrentState = State.Running;
+        public State eCurrentState
         {
-            get => m_state;
+            get => m_eCurrentState;
             set
             {
-                m_state = value;
+                m_eCurrentState = value;
                 evOnStateChanged?.Invoke();
             }
         }
 
         protected virtual void Start()
 		{
-            iLifes = m_iStartLifes;
+            iLifesLeft = m_iStartLifes;
         }
 
 

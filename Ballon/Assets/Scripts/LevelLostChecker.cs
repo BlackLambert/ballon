@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Balloon
@@ -9,6 +6,8 @@ namespace Balloon
     {
         [SerializeField]
         private Level m_level;
+
+        private bool bNoLifesLeft => m_level.iLifesLeft <= 0;
 
         protected virtual void Start()
 		{
@@ -22,8 +21,8 @@ namespace Balloon
 
 		private void checkLevelLost()
 		{
-            if (m_level.iLifes <= 0)
-                m_level.state = Level.State.Lost;
+            if (this.bNoLifesLeft)
+                m_level.eCurrentState = Level.State.Lost;
         }
 	}
 }

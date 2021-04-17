@@ -8,7 +8,7 @@ namespace Balloon
 {
     public class CollectablesText : MimiBehaviour
     {
-		private const string c_text = "{0} / {1}";
+		private const string c_strTextBase = "{0} / {1}";
 
         [SerializeField]
         private TextMeshProUGUI m_textField;
@@ -30,7 +30,7 @@ namespace Balloon
 
 		private void updateText()
 		{
-			m_textField.text = string.Format(c_text, _level.iCollectedCollectablesCount, _level.iMaxCollectablesCount);
+			m_textField.text = string.Format(c_strTextBase, _level.iCollectedCollectablesCount, _level.iMaxCollectablesCount);
 		}
 	}
 }

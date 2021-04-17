@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Balloon
@@ -9,12 +7,16 @@ namespace Balloon
         [SerializeField]
         private Level m_level;
 
-
 		private void OnTriggerEnter(Collider _colOther)
+		{
+			checkLevelWon(_colOther);
+		}
+
+		private void checkLevelWon(Collider _colOther)
 		{
 			if (_colOther.GetComponentInChildren<Balloon>() == null)
 				return;
-			m_level.state = Level.State.Won;
+			m_level.eCurrentState = Level.State.Won;
 		}
 	}
 }

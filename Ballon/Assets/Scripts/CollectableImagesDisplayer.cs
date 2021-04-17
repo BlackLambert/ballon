@@ -23,7 +23,7 @@ namespace Balloon
         protected virtual void Start()
 		{
             createImages();
-            StartCoroutine(startFill());
+            StartCoroutine(startActivateFillAnimations());
 		}
 
 		private void createImages()
@@ -39,12 +39,12 @@ namespace Balloon
             image.trans.SetParent(m_transHook, false);
         }
 
-        private IEnumerator startFill()
+        private IEnumerator startActivateFillAnimations()
 		{
             yield return new WaitForSeconds(m_fStartDelay);
             for (int i = 0; i < m_screen.iCollectabledFound; i++)
 			{
-                m_liCollectableImages[i].SetFilled();
+                m_liCollectableImages[i].setFilled();
                 yield return new WaitForSeconds(m_fInbetweenDelay);
             }
 		}

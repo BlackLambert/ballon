@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Balloon
@@ -16,6 +14,8 @@ namespace Balloon
         [SerializeField]
         private string m_strNextLevelName = "Level";
 
+        private bool bIsLevelWon => m_level.eCurrentState == Level.State.Won;
+
         protected virtual void Start()
 		{
             m_level.evOnStateChanged += checkGameWon;
@@ -23,12 +23,12 @@ namespace Balloon
 
         protected virtual void OnDestroy()
         {
-            m_level.evOnStateChanged += checkGameWon;
+            m_level.evOnStateChanged -= checkGameWon;
         }
 
 		private void checkGameWon()
 		{
-            if (m_level.state != Level.State.Won)
+            if (!this.bIsLevelWon)
                 return;
             StartCoroutine(startCreatingScreen());
 		}

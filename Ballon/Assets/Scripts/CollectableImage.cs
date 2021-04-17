@@ -10,7 +10,7 @@ namespace Balloon
 		[SerializeField]
         private Animator m_animator;
 
-        public void SetFilled()
+        public void setFilled()
 		{
             m_animator.SetBool(c_strFilledAnimatorParameter, true);
         }

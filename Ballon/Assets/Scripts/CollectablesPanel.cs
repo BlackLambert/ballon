@@ -4,14 +4,13 @@ using UnityEngine;
 
 namespace Balloon
 {
-    public class CollectablesPanel : MonoBehaviour
+    public class CollectablesPanel : MimiBehaviour
     {
         private const string c_strAnimatorShowParameterName = "Show";
 
         [SerializeField]
         private Animator m_animator;
         
-
         public IEnumerator showTimed(float _fDuration)
 		{
             show();

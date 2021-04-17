@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,7 +25,7 @@ namespace Balloon
 
 		private void checkLevelRestart()
 		{
-            if (m_level.state != Level.State.Lost)
+            if (m_level.eCurrentState != Level.State.Lost)
                 return;
             StartCoroutine(initRestart());
 		}

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_raycaster: {fileID: 0}
   m_windAreaPrefab: {fileID: 7912266486014436190, guid: f386b4cf79c519c4f9d61370624f7bca, type: 3}
   m_fSecondsTillWindForceZero: 0.75
+  m_fDistanceThreshold: 0.25
 --- !u!1 &1894746229795350893
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ namespace Balloon
         [SerializeField]
         private WindArea m_windArea;
         [SerializeField]
-        private float m_fDeactivationDelay = 2f;
+        private float m_fDestructionDelay = 2f;
 
         protected virtual void Start()
 		{
@@ -25,9 +25,9 @@ namespace Balloon
 
 		private IEnumerator startDestruction()
 		{
-			yield return new WaitForSeconds(m_fDeactivationDelay);
+			yield return new WaitForSeconds(m_fDestructionDelay);
 			m_windArea.deactivate();
-			m_windArea.startDestruction();
+			StartCoroutine(m_windArea.startDestruction());
 		}
 	}
 }

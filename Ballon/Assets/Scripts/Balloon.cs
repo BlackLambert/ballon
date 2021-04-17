@@ -19,13 +19,32 @@ namespace Balloon
         private List<GameObject> m_liDamageObjects = new List<GameObject>();
         private int m_damage = 0;
 
+        [SerializeField]
+        private GameObject m_transRopeBase;
+
+        [SerializeField]
+        private Joint m_jointRopeEnd;
+
         protected virtual void Start()
 		{
+            m_transRopeBase.gameObject.SetActive(false);
             foreach (GameObject goDamageObject in m_liDamageObjects)
                 goDamageObject.SetActive(false);
         }
 
-        public void ApplyDamage()
+		public void hookTo(Rigidbody _rigid)
+		{
+            m_jointRopeEnd.connectedBody = _rigid;
+            m_transRopeBase.gameObject.SetActive(true);
+        }
+
+        public void unhookFrom(Rigidbody _rigid)
+		{
+            m_jointRopeEnd.connectedBody = null;
+            m_transRopeBase.gameObject.SetActive(false);
+        }
+
+		public void applyDamage()
 		{
             if (m_damage >= m_liDamageObjects.Count)
                 return;
@@ -33,7 +52,7 @@ namespace Balloon
             m_damage++;
         }
 
-        public void Kill()
+        public void kill()
 		{
             m_rigid.constraints = new RigidbodyConstraints();
             m_rigid.useGravity = true;
