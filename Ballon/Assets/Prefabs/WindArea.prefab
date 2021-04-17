@@ -4914,9 +4914,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5120f7e4539570468e68438f1bb13f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_fForce: 30
+  m_fMaxForce: 0.66
+  m_fMinForcePercentage: 0.2
   m_particleSystem: {fileID: 7444198248595724443}
+  m_fMaxParticleSpeed: 10
   m_destroyAfterSeconds: {fileID: 4887806734909931172}
+  m_fSecondsTillDeactivation: 2
+  m_fDestractionDelay: 1
 --- !u!114 &4887806734909931172
 MonoBehaviour:
   m_ObjectHideFlags: 0

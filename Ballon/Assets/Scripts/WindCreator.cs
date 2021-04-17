@@ -11,9 +11,12 @@ namespace Balloon
         private InteractionPlaneRaycaster m_raycaster;
         [SerializeField]
         private WindArea m_windAreaPrefab;
+		[SerializeField]
+		private float m_fSecondsTillWindForceZero = 1f;
 
 		private WindArea m_windAreaCurrent;
 		private Vector3 m_v3DownPos = Vector3.zero;
+		private float m_fPointerDownTime;
 
         protected virtual void Start()
 		{
@@ -32,6 +35,7 @@ namespace Balloon
 		private void onPointerDown(Vector3 _v3RayHitPos)
 		{
 			createWindAreaAt(_v3RayHitPos);
+			m_fPointerDownTime = Time.realtimeSinceStartup;
 		}
 
 		private void createWindAreaAt(Vector3 _v3RayHitPos)
@@ -45,6 +49,9 @@ namespace Balloon
 
 		private void onPointerUp(Vector3 _v3RayHitPos)
 		{
+			if (m_windAreaCurrent == null)
+				return;
+			
 			m_windAreaCurrent.activate();
 			m_windAreaCurrent = null;
 			m_v3DownPos = Vector3.zero;
@@ -54,9 +61,11 @@ namespace Balloon
 		{
 			if (m_windAreaCurrent == null)
 				return;
-			Vector3 v3Distance = _v3RayHitPos - m_v3DownPos;
-			m_windAreaCurrent.updateSize(m_v3DownPos, v3Distance);
 			
+			float fCreationTime = Time.realtimeSinceStartup - m_fPointerDownTime;
+			m_windAreaCurrent.fForcePercentage = Mathf.Clamp01((m_fSecondsTillWindForceZero - fCreationTime) / m_fSecondsTillWindForceZero);
+			Vector3 v3Distance = _v3RayHitPos - m_v3DownPos;
+			m_windAreaCurrent.updateArea(m_v3DownPos, v3Distance);
 		}
 	}
 }

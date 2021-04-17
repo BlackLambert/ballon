@@ -185,4 +185,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5120f7e4539570468e68438f1bb13f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_fForce: 100
+  m_fMaxForce: 10
+  m_fMinForcePercentage: 0.1
+  m_particleSystem: {fileID: 0}
+  m_fMaxParticleSpeed: 5
+  m_destroyAfterSeconds: {fileID: 0}
+  m_fSecondsTillDeactivation: 2
+  m_fDestractionDelay: 1
