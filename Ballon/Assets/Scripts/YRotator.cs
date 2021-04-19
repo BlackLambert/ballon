@@ -11,7 +11,7 @@ namespace Balloon
 
         protected virtual void Update()
 		{
-            m_transThis.Rotate(Vector3.up, _fDeltaRotation * Time.deltaTime);
+            m_transThis.Rotate(new Vector3(0, _fDeltaRotation * Time.deltaTime, 0), Space.World);
 		}
     }
 }
